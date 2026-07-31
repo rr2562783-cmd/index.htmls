@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empowerment Technology</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* FULL CSS CODE */
+        :root {
+            --bg-dark-blue: #050A1F;
+            --bg-card: rgba(14, 22, 51, 0.6);
+            --accent-pink: #FF66A3;
+            --neon-glow: rgba(255, 102, 163, 0.4);
+            --text-soft-pink: rgba(255, 192, 219, 0.85); /* Low opacity pink for readability */
+            --text-light: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-dark-blue);
+            color: var(--text-soft-pink);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--accent-pink);
+            text-shadow: 0 0 10px var(--neon-glow);
+            font-weight: 400;
+        }
+
+        p {
+            font-weight: 300;
+            font-size: 1.1rem;
+        }
+
+        a {
+            color: var(--accent-pink);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        a:hover {
+            text-shadow: 0 0 8px var(--neon-glow);
+            color: #ff85b8;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(5, 10, 31, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 20px 50px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 102, 163, 0.1);
+        }
+
+        nav a {
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            color: var(--text-soft-pink);
+        }
+
+        nav a:hover {
+            color: var(--accent-pink);
+        }
+
+        /* Header / Hero Section */
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            background: radial-gradient(circle at center, rgba(14,22,51,1) 0%, var(--bg-dark-blue) 100%);
+        }
+
+        header h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            color: var(--text-soft-pink);
+        }
+
+        /* General Section Layout */
+        section {
+            padding: 100px 10vw;
+            border-bottom: 1px solid rgba(255, 102, 163, 0.05);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+        }
+
+        /* Section 1: Definition */
+        .story-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .story-text p {
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .diagram-box {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 102, 163, 0.2);
+            border-radius: 15px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .stat-circle {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 4px solid var(--accent-pink);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 20px;
+            box-shadow: 0 0 20px var(--neon-glow), inset 0 0 20px var(--neon-glow);
+        }
+
+        .stat-circle h2 {
+            font-size: 2.5rem;
+            margin: 0;
+            border: none;
+        }
+
+        /* Section 2: Evolution (Timeline) */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background: rgba(255, 102, 163, 0.3);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1px;
+        }
+
+        .timeline-item {
+            padding: 20px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+
+        .timeline-item.left { left: 0; }
+        .timeline-item.right { left: 50%; }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            right: -8px;
+            background-color: var(--bg-dark-blue);
+            border: 3px solid var(--accent-pink);
+            top: 25px;
+            border-radius: 50%;
+            z-index: 1;
+            box-shadow: 0 0 10px var(--neon-glow);
+        }
+
+        .timeline-item.right::after {
+            left: -8px;
+        }
+
+        .timeline-content {
+            padding: 30px;
+            background: var(--bg-card);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 102, 163, 0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 102, 163, 0.4);
+        }
+
+        /* Section 3: Watch and Learn */
+        .video-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255, 102, 163, 0.2);
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Section 4: Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 102, 163, 0.1);
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .project-card:hover {
+            box-shadow: 0 0 20px rgba(255, 102, 163, 0.15);
+            border-color: var(--accent-pink);
+        }
+
+        .project-card video {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            outline: none;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            border: 1px solid var(--accent-pink);
+            border-radius: 25px;
+            color: var(--accent-pink);
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+
+        .btn:hover {
+            background: var(--accent-pink);
+            color: var(--bg-dark-blue);
+            text-shadow: none;
+        }
+
+        /* Section 5: Be Safe */
+        .safety-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .safety-card {
+            background: var(--bg-card);
+            padding: 30px;
+            border-left: 3px solid var(--accent-pink);
+            border-radius: 5px 15px 15px 5px;
+        }
+
+        .safety-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(5, 10, 31, 1);
+            font-size: 0.9rem;
+        }
+
+        .references {
+            margin-top: 20px;
+            font-size: 0.8rem;
+            opacity: 0.6;
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 900px) {
+            .story-container, .video-grid, .safety-grid {
+                grid-template-columns: 1fr;
+            }
+            .timeline::after { left: 31px; }
+            .timeline-item { width: 100%; padding-left: 70px; padding-right: 25px; }
+            .timeline-item.right { left: 0%; }
+            .timeline-item.left::after, .timeline-item.right::after { left: 23px; }
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#definition">Definition</a>
+        <a href="#evolution">Evolution</a>
+        <a href="#watch">Watch & Learn</a>
+        <a href="#projects">My Projects</a>
+        <a href="#besafe">Be Safe</a>
+    </nav>
+
+    <header>
+        <h1>Empowerment Technology</h1>
+        <p>Designing the future, transforming communication, and connecting the world one click at a time.</p>
+    </header>
+
+    <!-- SECTION 1: DEFINITION -->
+    <section id="definition">
+        <h2 class="section-title">The Spark of Connection</h2>
+        <div class="story-container">
+            <div class="story-text">
+                <p>Imagine a world where the horizon was the absolute limit of your reach. Not too long ago, communicating across oceans meant waiting weeks or months. Knowledge was confined to heavy encyclopedias, and starting a movement required physical presence.</p>
+                <p>Then came the digital dawn. Empowerment Technology isn't just about computers and code; it is the modern magic that gives ordinary individuals the power to do extraordinary things. It encompasses ICT (Information and Communication Technology) tools that allow us to create, collaborate, and catalyze change from our very fingertips.</p>
+                <p>Today, you carry the sum of human knowledge in your pocket. You have the tools to launch a business, learn a new language, or advocate for a global cause while sitting at your desk. It is the great equalizer of our era.</p>
+            </div>
+            <div class="diagram-box">
+                <div class="stat-circle">
+                    <h2>5.4B+</h2>
+                    <p>Users</p>
+                </div>
+                <h3>The Global Village</h3>
+                <p>As of late 2023, over 5.4 billion people are connected to the Internet, representing approximately 67% of the global population.</p>
+                <small>*Reference: ITU (International Telecommunication Union) Data 2023</small>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: EVOLUTION -->
+    <section id="evolution">
+        <h2 class="section-title">The Web's Evolution</h2>
+        <div class="timeline">
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <h3>Web 1.0: The Read-Only Web</h3>
+                    <p>In the early days (1989-2005), the web was like a giant digital library. Pages were static, built on basic HTML. You could consume information, but interaction was nearly impossible. It was a one-way street of data.</p>
+                </div>
+            </div>
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <h3>Web 2.0: The Social Web</h3>
+                    <p>From 2004 onward, the web woke up. Sites became dynamic and user-generated. This era gave birth to social media, blogs, and video sharing. We transitioned from mere readers to creators and collaborators.</p>
+                </div>
+            </div>
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <h3>Web 3.0: The Semantic Web</h3>
+                    <p>The current frontier. Web 3.0 is driven by AI, decentralization, and machine learning. The internet now understands context, tailoring experiences uniquely to you. It's an intelligent, interconnected digital ecosystem.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: WATCH AND LEARN -->
+    <section id="watch">
+        <h2 class="section-title">Watch and Learn</h2>
+        <div class="video-grid">
+            <div class="video-wrapper">
+                <iframe src="https://www.youtube.com/embed/Sfzo4xm5eX8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+            <div class="video-wrapper">
+                <iframe src="https://www.youtube.com/embed/zmU9j0l9ORA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: MY PROJECTS -->
+    <section id="projects">
+        <h2 class="section-title">My Projects</h2>
+        <div class="projects-grid">
+            
+            <div class="project-card">
+                <h3>Powtoon Presentation</h3>
+                <p>An animated presentation exploring core concepts of digital connectivity.</p>
+                <a href="https://www.powtoon.com/online-presentation/bBSOABYp369/?utm_po=51914502&mode=movie" target="_blank" class="btn">View Powtoon</a>
+            </div>
+
+            <div class="project-card">
+                <h3>CapCut Edit</h3>
+                <!-- Assumes capcuttorre.mp4 is in the same folder as this index.html file -->
+                <video controls>
+                    <source src="capcuttorre.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p>A video editing project showcasing visual storytelling.</p>
+            </div>
+
+            <div class="project-card">
+                <h3>Canva Design</h3>
+                <p>A graphic design project exploring visual hierarchy and digital art.</p>
+                <a href="https://www.canva.com/design/DAHM7CtHW9w/CmgNBnHKA9TokxnySS0HGg/edit" target="_blank" class="btn">View on Canva</a>
+            </div>
+
+            <div class="project-card">
+                <h3>Pinterest Board</h3>
+                <p>A curated collection of digital inspiration and tech resources.</p>
+                <a href="https://pin.it/5CS9C5TFG" target="_blank" class="btn">View Profile</a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION 5: BE SAFE -->
+    <section id="besafe">
+        <h2 class="section-title">Be Safe: Digital Netiquette</h2>
+        <div class="safety-grid">
+            <div class="safety-card">
+                <h3>1. Remember the Human</h3>
+                <p>Behind every screen name is a real person. Never type anything to someone that you wouldn't confidently say to their face.</p>
+            </div>
+            <div class="safety-card">
+                <h3>2. Think Before You Click</h3>
+                <p>Phishing and malware thrive on impulse. Always verify the source of emails and links before sharing data or downloading files.</p>
+            </div>
+            <div class="safety-card">
+                <h3>3. Protect Your Privacy</h3>
+                <p>Keep your personal information locked down. Use strong, unique passwords for different accounts and enable Two-Factor Authentication (2FA).</p>
+            </div>
+            <div class="safety-card">
+                <h3>4. Fact-Check Everything</h3>
+                <p>In the age of misinformation, be a responsible digital citizen. Verify news from credible sources before hitting the share button.</p>
+            </div>
+            <div class="safety-card">
+                <h3>5. Respect Copyrights</h3>
+                <p>Give credit where it is due. Avoid stealing digital art, code, or text. Always use proper citations and respect intellectual property.</p>
+            </div>
+            <div class="safety-card">
+                <h3>6. Forgive Mistakes</h3>
+                <p>Everyone was a network newbie once. If someone makes a mistake in a forum or chat, correct them kindly and privately.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Empowerment Technology Portfolio. All rights reserved.</p>
+        <div class="references">
+            <p><strong>References:</strong></p>
+            <p>1. Internet User Statistics: International Telecommunication Union (ITU) Facts and Figures 2023.</p>
+            <p>2. "What is the Internet?" - Code.org (YouTube: Sfzo4xm5eX8)</p>
+            <p>3. "How the Internet Works in 5 Minutes" - Aaron (YouTube: zmU9j0l9ORA)</p>
+        </div>
+    </footer>
+
+</body>
+</html>
